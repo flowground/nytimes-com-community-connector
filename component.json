@@ -1,0 +1,106 @@
+{
+    "title": "Community",
+    "description": "Get access to comments from registered users on New York Times articles.  NOTE: This API is deprecated.",
+    "docsUrl": "http://developer.nytimes.com/",
+    "url": "https://api.apis.guru/v2/specs/nytimes.com/community/3.0.0/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "http://api.nytimes.com/svc/community/v3",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "api-key": {
+                "label": "api-key (api-key)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "GET_user_content_by_date_json": {
+            "main": "./lib/actions/GET_user_content_by_date_json.js",
+            "title": "Comments by Date",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GET_user_content_by_date_json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GET_user_content_recent_json": {
+            "main": "./lib/actions/GET_user_content_recent_json.js",
+            "title": "Recent User Comments",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GET_user_content_recent_json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GET_user_content_url_json": {
+            "main": "./lib/actions/GET_user_content_url_json.js",
+            "title": "Comments by URL",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GET_user_content_url_json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GET_user_content_user_json": {
+            "main": "./lib/actions/GET_user_content_user_json.js",
+            "title": "Comments by User",
+            "description": "",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GET_user_content_user_json.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
